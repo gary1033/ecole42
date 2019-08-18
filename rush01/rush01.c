@@ -6,23 +6,38 @@
 /*   By: ruchang <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 10:49:50 by ruchang           #+#    #+#             */
-/*   Updated: 2019/08/18 10:29:58 by ruchang          ###   ########.fr       */
+/*   Updated: 2019/08/18 14:38:38 by ruchang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <unistd.h>
 
-int g_done;
+int		g_done;
+char	g_ans[10][10];
 
-void	ft_putchar(char c);
 void	sudoku(char **plate, int y, int x);
 int		check_num(char **plate, int col, int row, char num);
-void	display(char **plate);
+void	display(void);
+void	ft_copy(char **plate);
 
-void	ft_putchar(char c)
+void	ft_copy(char **plate)
 {
-	write(1, &c, 1);
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	while (i < 9)
+	{
+		j = 0;
+		while (j < 9)
+		{
+			g_ans[i][j] = plate[i + 1][j];
+			j++;
+		}
+		i++;
+	}
 }
 
 int		check_num(char **plate, int col, int row, char num)
@@ -61,8 +76,8 @@ void	sudoku(char **plate, int y, int x)
 	i = 1;
 	if (y == 10)
 	{
-		display(plate);
-		g_done = 1;
+		ft_copy(plate);
+		g_done++;
 	}
 	else if (plate[y][x] != '.')
 	{
@@ -83,23 +98,23 @@ void	sudoku(char **plate, int y, int x)
 	}
 }
 
-void	display(char **plate)
+void	display(void)
 {
 	int i;
 	int j;
 
-	i = 1;
-	while (i < 10)
+	i = 0;
+	while (i < 9)
 	{
 		j = 0;
 		while (j < 9)
 		{
-			ft_putchar(plate[i][j]);
+			write(1, &g_ans[i][j], 1);
 			if (j < 8)
-				ft_putchar(' ');
+				write(1, " ", 1);
 			j++;
 		}
-		ft_putchar('\n');
+		write(1, "\n", 1);
 		i++;
 	}
 }
@@ -111,9 +126,12 @@ int		main(int argc, char **argv)
 		sudoku(argv, 1, 0);
 		if (g_done != 1)
 			write(1, "Error\n", 6);
+		else
+			display();
 	}
 	else
 	{
 		write(1, "Error\n", 6);
 	}
+	return (0);
 }
