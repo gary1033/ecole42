@@ -6,7 +6,7 @@
 /*   By: ruchang <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 10:49:50 by ruchang           #+#    #+#             */
-/*   Updated: 2019/08/18 14:38:38 by ruchang          ###   ########.fr       */
+/*   Updated: 2019/08/18 20:53:37 by ruchang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,18 @@ void	display(void)
 
 int		main(int argc, char **argv)
 {
+	int len_check;
+
+	len_check = 1;
+	while (len_check < 10)
+	{
+		if (argv[len_check][9] != '\0')
+		{
+			write(1, "Error\n", 6);
+			return (0);
+		}
+		len_check++;
+	}
 	if (argc == 10)
 	{
 		sudoku(argv, 1, 0);
