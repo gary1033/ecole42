@@ -6,7 +6,7 @@
 /*   By: ruchang <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 10:49:50 by ruchang           #+#    #+#             */
-/*   Updated: 2019/08/20 21:38:34 by ruchang          ###   ########.fr       */
+/*   Updated: 2019/08/21 11:19:18 by ruchang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ int		main(int argc, char **argv)
 	int len_check;
 
 	len_check = 1;
-	while (len_check < 10)
+	while (argv[len_check])
 	{
 		if (argv[len_check][9] != '\0')
 		{

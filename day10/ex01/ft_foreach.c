@@ -6,7 +6,7 @@
 /*   By: ruchang <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/19 12:28:39 by ruchang           #+#    #+#             */
-/*   Updated: 2019/08/19 13:05:50 by ruchang          ###   ########.fr       */
+/*   Updated: 2019/08/21 14:24:24 by ruchang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_foreach(int *tab, int length, void(*f)(int))
 	i = 0;
 	while (i < length)
 	{
-		*f(tab[i]);
+		f(tab[i]);
 		i++;
 	}
 }
